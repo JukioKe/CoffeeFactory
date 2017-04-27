@@ -24,8 +24,7 @@
                 android:layout_marginTop="16dp"
                 android:text="This is your wonderful change to order the best coffee in town straight from your pocket computer!  :)"
                 android:textSize="16sp" />
-
-
+            
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
