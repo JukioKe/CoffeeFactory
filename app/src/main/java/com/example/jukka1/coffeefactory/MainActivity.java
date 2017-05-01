@@ -2,7 +2,9 @@ package com.example.jukka1.coffeefactory;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ButtonBarLayout;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -26,14 +28,28 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price = americanQuantity * 5;
-        String priceMessage = "Total price is " + price + "€ \n" +
-                "Thank you!";
-        displayMessage(priceMessage);
+        int price = 0;
+        String priceMessage = "";
+        price += americanQuantity * 2;
+        price += espressoQuantity * 2;
+        price += cappuccinoQuantity * 3;
+        price += latteQuantity * 3;
+        price += specialQuantity * 7;
+
+        if (price == 0) {
+            priceMessage = "Your cart is empty. Please choose something delicious!";
+            displayMessage(priceMessage);
+
+        } else {
+            priceMessage = "Total price is " + price + "€ \n" +
+                    "Please click ORDER-button to confirm your order!";
+            displayMessage(priceMessage);
+            displayOrderButton();
+        }
     }
 
     /**
-     * These methods displays the given americanQuantity value of the chosen coffees.
+     * These methods displays the given Quantity value of the chosen coffees.
      */
     private void displayAmerican(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.american_quantity_text_view);
@@ -66,11 +82,18 @@ public class MainActivity extends AppCompatActivity {
     private void displayMessage(String message) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(message);
-
     }
 
     /**
-     * These methods decreases the americanQuantity of chosen coffees by 1
+     * This method displays Order-button after Update Cart-button is clicked
+     */
+    private void displayOrderButton() {
+        Button orderButton = (Button) findViewById(R.id.order_button_view);
+        orderButton.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * These methods decreases or increases the Quantity of chosen coffees by 1
      */
 
     public void americanIncrement(View view) {
