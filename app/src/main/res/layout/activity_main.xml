@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@drawable/coffeeheart"
+    android:orientation="vertical"
     tools:context="com.example.jukka1.coffeefactory.MainActivity">
 
     <ScrollView
@@ -30,8 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart
-                    ="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:text="Coffee list:"
                 android:textAllCaps="true"
@@ -56,8 +55,10 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
+                    android:background="@drawable/button_selector"
                     android:onClick="americanDecrement"
-                    android:text="-" />
+                    android:text="-"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/american_quantity_text_view"
@@ -72,8 +73,10 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
+                    android:background="@drawable/button_selector"
                     android:onClick="americanIncrement"
-                    android:text="+" />
+                    android:text="+"
+                    android:textColor="@android:color/white" />
 
             </LinearLayout>
 
@@ -96,6 +99,8 @@
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
                     android:onClick="espressoDecrement"
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
                     android:text="-" />
 
                 <TextView
@@ -112,6 +117,8 @@
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
                     android:onClick="espressoIncrement"
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
                     android:text="+" />
 
             </LinearLayout>
@@ -135,6 +142,8 @@
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
                     android:onClick="cappuccinoDecrement"
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
                     android:text="-" />
 
                 <TextView
@@ -151,6 +160,8 @@
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
                     android:onClick="cappuccinoIncrement"
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
                     android:text="+" />
 
             </LinearLayout>
@@ -174,6 +185,8 @@
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
                     android:onClick="latteDecrement"
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
                     android:text="-" />
 
                 <TextView
@@ -190,6 +203,8 @@
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
                     android:onClick="latteIncrement"
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
                     android:text="+" />
 
             </LinearLayout>
@@ -213,6 +228,8 @@
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
                     android:onClick="specialDecrement"
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
                     android:text="-" />
 
                 <TextView
@@ -229,6 +246,8 @@
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
                     android:onClick="specialIncrement"
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
                     android:text="+" />
 
             </LinearLayout>
@@ -239,8 +258,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 android:text="Price"
-                android:textColor="#EEEEEE"
                 android:textAllCaps="true"
+                android:textColor="#EEEEEE"
                 android:textSize="16sp" />
 
             <TextView
@@ -265,7 +284,9 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
                     android:onClick="submitOrder"
-                    android:text="Update cart" />
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
+                    android:text="  Update cart  " />
 
                 <Button
                     android:id="@+id/order_button_view"
@@ -274,8 +295,10 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
                     android:onClick="submitOrder"
-                    android:visibility="gone"
-                    android:text="Order"/>
+                    android:background="@drawable/button_selector"
+                    android:textColor="@android:color/white"
+                    android:text="Order"
+                    android:visibility="gone" />
 
             </LinearLayout>
 

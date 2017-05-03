@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         if (price == 0) {
             priceMessage = "Your cart is empty. Please choose something delicious!";
             displayMessage(priceMessage);
-
+            hideOrderButton();
         } else {
             priceMessage = "Total price is " + price + "€ \n" +
                     "Please click ORDER-button to confirm your order!";
@@ -90,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
     private void displayOrderButton() {
         Button orderButton = (Button) findViewById(R.id.order_button_view);
         orderButton.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * This method hides the Order-button if Update cart-button is pressed but cart is empty
+     */
+    private void hideOrderButton() {
+        Button orderButton = (Button) findViewById(R.id.order_button_view);
+        orderButton.setVisibility(View.INVISIBLE);
     }
 
     /**
