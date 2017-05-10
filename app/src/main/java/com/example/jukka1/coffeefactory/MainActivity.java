@@ -17,6 +17,11 @@ public class MainActivity extends AppCompatActivity {
     int cappuccinoQuantity = 0;
     int latteQuantity = 0;
     int specialQuantity = 0;
+    int americanPrice = 2;
+    int espressoQPrice = 2;
+    int cappuccinoPrice = 3;
+    int lattePrice = 3;
+    int specialPrice = 7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +33,8 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price = 0;
+        int price = calculatePrice();
         String priceMessage = "";
-        price += americanQuantity * 2;
-        price += espressoQuantity * 2;
-        price += cappuccinoQuantity * 3;
-        price += latteQuantity * 3;
-        price += specialQuantity * 7;
 
         if (price == 0) {
             priceMessage = "Your cart is empty. Please choose something delicious!";
@@ -47,6 +47,20 @@ public class MainActivity extends AppCompatActivity {
             displayOrderButton();
         }
     }
+
+    /**
+     * This method calculates total price of the order
+     */
+    private int calculatePrice() {
+        int price = 0;
+        price += americanQuantity * americanPrice;
+        price += espressoQuantity * espressoQPrice;
+        price += cappuccinoQuantity * cappuccinoPrice;
+        price += latteQuantity * lattePrice;
+        price += specialQuantity * specialPrice;
+        return price;
+    }
+
 
     /**
      * These methods displays the given Quantity value of the chosen coffees.
@@ -117,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void espressoIncrement(View view) {
-            espressoQuantity++;
+        espressoQuantity++;
         displayEspresso(espressoQuantity);
     }
 
