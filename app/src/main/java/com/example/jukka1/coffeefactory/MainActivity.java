@@ -41,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
             displayMessage(priceMessage);
             hideOrderButton();
         } else {
-            priceMessage = "Total price is " + price + "€ \n" +
-                    "Please click ORDER-button to confirm your order!";
-            displayMessage(priceMessage);
+            displayMessage(createOrderSummary(price));
             displayOrderButton();
         }
     }
@@ -59,6 +57,34 @@ public class MainActivity extends AppCompatActivity {
         price += latteQuantity * lattePrice;
         price += specialQuantity * specialPrice;
         return price;
+    }
+
+
+    /**
+     * This method creates a order summary and returns it as an String
+     */
+    private String createOrderSummary(int price) {
+        String priceMessage = "Total price is " + price + "€ \n" +
+                "\nOrder list:\n";
+
+        if (americanQuantity > 0) {
+            priceMessage += americanQuantity + " x American\n";
+        }
+        if (espressoQuantity > 0) {
+            priceMessage += espressoQuantity + " x Espresso\n";
+        }
+        if (cappuccinoQuantity > 0) {
+            priceMessage += cappuccinoQuantity + " x Cappuccino\n";
+        }
+        if (latteQuantity > 0) {
+            priceMessage += latteQuantity + " x Latte\n";
+        }
+        if (specialQuantity > 0) {
+            priceMessage += specialQuantity + " x Special coffee\n";
+        }
+
+        priceMessage += "\nPlease click ORDER-button to confirm your order!";
+        return priceMessage;
     }
 
 
@@ -94,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given message on the screen
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 
     /**
