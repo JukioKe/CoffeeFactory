@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/coffeeheart"
+    android:background="@drawable/coffeeheart1"
     android:orientation="vertical"
     tools:context="com.example.jukka1.coffeefactory.MainActivity">
 
@@ -26,6 +26,14 @@
                 android:text="This is your wonderful change to order the best coffee in town straight from your pocket computer!  :)"
                 android:textColor="#EEEEEE"
                 android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/name_edittext_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#9E9E9E" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,10 +106,10 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
-                    android:onClick="espressoDecrement"
                     android:background="@drawable/button_selector"
-                    android:textColor="@android:color/white"
-                    android:text="-" />
+                    android:onClick="espressoDecrement"
+                    android:text="-"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/espresso_quantity_text_view"
@@ -116,10 +124,10 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
-                    android:onClick="espressoIncrement"
                     android:background="@drawable/button_selector"
-                    android:textColor="@android:color/white"
-                    android:text="+" />
+                    android:onClick="espressoIncrement"
+                    android:text="+"
+                    android:textColor="@android:color/white" />
 
             </LinearLayout>
 
@@ -141,10 +149,10 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
-                    android:onClick="cappuccinoDecrement"
                     android:background="@drawable/button_selector"
-                    android:textColor="@android:color/white"
-                    android:text="-" />
+                    android:onClick="cappuccinoDecrement"
+                    android:text="-"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/cappuccino_quantity_text_view"
@@ -159,10 +167,10 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
-                    android:onClick="cappuccinoIncrement"
                     android:background="@drawable/button_selector"
-                    android:textColor="@android:color/white"
-                    android:text="+" />
+                    android:onClick="cappuccinoIncrement"
+                    android:text="+"
+                    android:textColor="@android:color/white" />
 
             </LinearLayout>
 
@@ -184,10 +192,10 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
-                    android:onClick="latteDecrement"
                     android:background="@drawable/button_selector"
-                    android:textColor="@android:color/white"
-                    android:text="-" />
+                    android:onClick="latteDecrement"
+                    android:text="-"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/latte_quantity_text_view"
@@ -202,10 +210,10 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
-                    android:onClick="latteIncrement"
                     android:background="@drawable/button_selector"
-                    android:textColor="@android:color/white"
-                    android:text="+" />
+                    android:onClick="latteIncrement"
+                    android:text="+"
+                    android:textColor="@android:color/white" />
 
             </LinearLayout>
 
@@ -227,10 +235,10 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
-                    android:onClick="specialDecrement"
                     android:background="@drawable/button_selector"
-                    android:textColor="@android:color/white"
-                    android:text="-" />
+                    android:onClick="specialDecrement"
+                    android:text="-"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/special_quantity_text_view"
@@ -245,12 +253,14 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
-                    android:onClick="specialIncrement"
                     android:background="@drawable/button_selector"
-                    android:textColor="@android:color/white"
-                    android:text="+" />
+                    android:onClick="specialIncrement"
+                    android:text="+"
+                    android:textColor="@android:color/white" />
+
 
             </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -268,8 +278,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="10dp"
-                android:padding="8dp"
                 android:background="@drawable/order_summary_background"
+                android:padding="8dp"
                 android:text="Choose something tasty :)"
                 android:textColor="#EEEEEE"
                 android:textSize="16sp" />
@@ -285,10 +295,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
-                    android:onClick="submitOrder"
                     android:background="@drawable/button_selector"
-                    android:textColor="@android:color/white"
-                    android:text="  Update cart  " />
+                    android:onClick="submitOrder"
+                    android:text="  Update cart  "
+                    android:textColor="@android:color/white" />
 
                 <Button
                     android:id="@+id/order_button_view"
@@ -296,10 +306,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
-                    android:onClick="submitOrder"
                     android:background="@drawable/button_selector"
-                    android:textColor="@android:color/white"
+                    android:onClick="submitOrder"
                     android:text="Order"
+                    android:textColor="@android:color/white"
                     android:visibility="gone" />
 
             </LinearLayout>
