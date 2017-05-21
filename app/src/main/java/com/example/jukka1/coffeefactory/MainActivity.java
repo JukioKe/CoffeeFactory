@@ -3,8 +3,11 @@ package com.example.jukka1.coffeefactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ButtonBarLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     int lattePrice = 3;
     int specialPrice = 7;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +34,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method is called when the order button is clicked.
+     * This method is called when the Update cart/Order button is clicked.
+     * if price is 0, the guide the user to choose someting.
+     * If some of the required fields are empty, guide the user.
      */
     public void submitOrder(View view) {
         int price = calculatePrice();
+        
         String priceMessage = "";
 
-        if (price == 0) {
+        if (price == 0 && getName().isEmpty()) {
+            priceMessage = "Guide:";
+            priceMessage += "\n- Your cart is empty. Please choose something delicious!";
+            priceMessage += "\n- Insert name, please.";
+            displayMessage(priceMessage);
+            hideOrderButton();
+        } else if (getName().isEmpty()) {
+            priceMessage = "Insert name, please.";
+            displayMessage(priceMessage);
+            hideOrderButton();
+        } else if (price == 0) {
             priceMessage = "Your cart is empty. Please choose something delicious!";
             displayMessage(priceMessage);
             hideOrderButton();
@@ -59,12 +76,21 @@ public class MainActivity extends AppCompatActivity {
         return price;
     }
 
+    /**
+     * This method returns String value of the current state of EditText nameField
+     */
+    private String getName() {
+        EditText nameField = (EditText) findViewById(R.id.name_edittext_view);
+        String name = nameField.getText().toString();
+        return name;
+    }
 
     /**
      * This method creates a order summary and returns it as an String
      */
     private String createOrderSummary(int price) {
-        String priceMessage = "Total price is " + price + "€ \n" +
+        String priceMessage = "Name: " + getName() +
+                "\nTotal price is " + price + "€ \n" +
                 "\nOrder list:\n";
 
         if (americanQuantity > 0) {
@@ -203,4 +229,6 @@ public class MainActivity extends AppCompatActivity {
         }
         displaySpecial(specialQuantity);
     }
+
+
 }
