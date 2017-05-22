@@ -1,5 +1,6 @@
 package com.example.jukka1.coffeefactory;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ButtonBarLayout;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This app displays an order form to order coffee.
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
      * if price is 0, the guide the user to choose someting.
      * If some of the required fields are empty, guide the user.
      */
-    public void submitOrder(View view) {
+    public void updateCart(View view) {
         int price = calculatePrice();
         
         String priceMessage = "";
@@ -62,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
             displayOrderButton();
         }
     }
+
+    /**
+     * This method is called when the Order button is clicked.
+     */
+    public void verifyOrder(View view) {
+        Toast.makeText(MainActivity.this, "Thank you!", Toast.LENGTH_SHORT).show();
+    }
+
 
     /**
      * This method calculates total price of the order
