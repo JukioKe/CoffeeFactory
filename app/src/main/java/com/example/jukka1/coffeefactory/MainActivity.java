@@ -1,6 +1,8 @@
 package com.example.jukka1.coffeefactory;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ButtonBarLayout;
@@ -37,12 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * This method is called when the Update cart/Order button is clicked.
-     * if price is 0, the guide the user to choose someting.
+     * if price is 0, the guide the user to choose something.
      * If some of the required fields are empty, guide the user.
      */
     public void updateCart(View view) {
         int price = calculatePrice();
-        
         String priceMessage = "";
 
         if (price == 0 && getName().isEmpty()) {
@@ -63,13 +64,14 @@ public class MainActivity extends AppCompatActivity {
             displayMessage(createOrderSummary(price));
             displayOrderButton();
         }
+
     }
 
     /**
      * This method is called when the Order button is clicked.
      */
     public void verifyOrder(View view) {
-        Toast.makeText(MainActivity.this, "Thank you!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Thank you!", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -181,7 +183,11 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void americanIncrement(View view) {
-        americanQuantity++;
+        if (americanQuantity < 100) {
+            americanQuantity++;
+        } else {
+            Toast.makeText(this, "You cannot order more than 100 american coffees", Toast.LENGTH_SHORT).show();
+        }
         displayAmerican(americanQuantity);
     }
 
@@ -193,7 +199,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void espressoIncrement(View view) {
-        espressoQuantity++;
+        if (espressoQuantity < 100) {
+            espressoQuantity++;
+        } else {
+            Toast.makeText(this, "You cannot order more than 100 espressos", Toast.LENGTH_SHORT).show();
+        }
         displayEspresso(espressoQuantity);
     }
 
@@ -205,7 +215,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cappuccinoIncrement(View view) {
-        cappuccinoQuantity++;
+        if (cappuccinoQuantity < 100) {
+            cappuccinoQuantity++;
+        } else {
+            Toast.makeText(this, "You cannot order more than 100 cappuccinos", Toast.LENGTH_SHORT).show();
+        }
+
         displayCappuccino(cappuccinoQuantity);
     }
 
@@ -217,7 +232,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void latteIncrement(View view) {
-        latteQuantity++;
+        if (latteQuantity < 100) {
+            latteQuantity++;
+        } else {
+            Toast.makeText(this, "You cannot order more than 100 lattes", Toast.LENGTH_SHORT).show();
+        }
         displayLatte(latteQuantity);
     }
 
@@ -229,7 +248,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void specialIncrement(View view) {
-        specialQuantity++;
+        if (specialQuantity < 50 ) {
+            specialQuantity++;
+        } else {
+            Toast.makeText(this, "You cannot order more than 50 Coffee Factor specials", Toast.LENGTH_SHORT).show();
+        }
         displaySpecial(specialQuantity);
     }
 
@@ -239,6 +262,5 @@ public class MainActivity extends AppCompatActivity {
         }
         displaySpecial(specialQuantity);
     }
-
 
 }
