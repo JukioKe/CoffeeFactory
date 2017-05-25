@@ -32,7 +32,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
-                android:
                 android:textColor="#EEEEEE"
                 android:textColorHint="#9E9E9E" />
 
