@@ -33,6 +33,15 @@
                 android:layout_height="wrap_content"
                 android:hint="Name"
                 android:textColor="#EEEEEE"
+                android:inputType="textCapSentences"
+                android:textColorHint="#9E9E9E" />
+
+            <EditText
+                android:id="@+id/email_edittext_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textColor="#EEEEEE"
                 android:textColorHint="#9E9E9E" />
 
             <TextView
