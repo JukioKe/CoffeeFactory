@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ButtonBarLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,33 +43,55 @@ public class MainActivity extends AppCompatActivity {
     public void updateCart(View view) {
         int price = calculatePrice();
         String priceMessage = "";
+        boolean isReadyToOrder = true;
 
-        if (price == 0 && getName().isEmpty()) {
-            priceMessage = "Guide:";
-            priceMessage += "\n- Your cart is empty. Please choose something delicious!";
-            priceMessage += "\n- Insert name, please.";
-            displayMessage(priceMessage);
-            hideOrderButton();
-        } else if (getName().isEmpty()) {
-            priceMessage = "Insert name, please.";
-            displayMessage(priceMessage);
-            hideOrderButton();
-        } else if (price == 0) {
-            priceMessage = "Your cart is empty. Please choose something delicious!";
-            displayMessage(priceMessage);
-            hideOrderButton();
-        } else {
+        if (price == 0) {
+            priceMessage += "Guide: Your cart is empty. Please choose something delicious!\n";
+            isReadyToOrder = false;
+        }
+        if (getName().isEmpty()) {
+            priceMessage += "Guide: Insert name, please.\n";
+            isReadyToOrder = false;
+        }
+        if (isValidEmail(getEmail()) == false) {
+            priceMessage += "Guide: Insert valid email address, please.";
+            isReadyToOrder = false;
+        }
+        if (isReadyToOrder == true) {
             displayMessage(createOrderSummary(price));
             displayOrderButton();
+            return;
         }
-
+        displayMessage(priceMessage);
+        hideOrderButton();
     }
+
+    /**
+     * This method is for testing
+     */
+    public void emailOrder(String[] addresses, String subject, String message) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setType("*/*");
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
 
     /**
      * This method is called when the Order button is clicked.
      */
     public void verifyOrder(View view) {
         Toast.makeText(this, "Thank you!", Toast.LENGTH_SHORT).show();
+        String message = createOrderSummary(calculatePrice());
+        String[] addresses = new String[1];
+        addresses[0] = "jukkas@protonmail.com";
+
+        emailOrder(addresses, "Testiviesti :)", message);
     }
 
 
@@ -98,10 +118,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * This method returns String value of the current state of EditText nameField
+     */
+    private String getEmail() {
+        EditText emailField = (EditText) findViewById(R.id.email_edittext_view);
+        String emailAddress = emailField.getText().toString();
+        if (isValidEmail(emailAddress) == true) {
+            return emailAddress;
+        }
+        return "not valid email";
+    }
+
+    /**
      * This method creates a order summary and returns it as an String
      */
     private String createOrderSummary(int price) {
         String priceMessage = "Name: " + getName() +
+                "\nEmail: " + getEmail() + "\n" +
                 "\nTotal price is " + price + "€ \n" +
                 "\nOrder list:\n";
 
@@ -248,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void specialIncrement(View view) {
-        if (specialQuantity < 50 ) {
+        if (specialQuantity < 50) {
             specialQuantity++;
         } else {
             Toast.makeText(this, "You cannot order more than 50 Coffee Factor specials", Toast.LENGTH_SHORT).show();
@@ -261,6 +294,18 @@ public class MainActivity extends AppCompatActivity {
             specialQuantity--;
         }
         displaySpecial(specialQuantity);
+    }
+
+
+    /**
+     * This method tries to validate user given email address
+     */
+    public final static boolean isValidEmail(CharSequence emailAddress) {
+        if (emailAddress == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches();
+        }
     }
 
 }
