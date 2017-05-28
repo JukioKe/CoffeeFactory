@@ -67,15 +67,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method is for testing
+     * This method opens email app with filled information about order to send order confirmation via email.
      */
     public void emailOrder(String[] addresses, String subject, String message) {
+        String mssg = "Thank you for your order!\n\n";
+        mssg += message;
+
+        if(mssg.lastIndexOf("\n")>0) {
+            mssg = mssg.substring(0, mssg.lastIndexOf("\n"));
+        }
+
+        mssg += "\n Regards,\nCoffee Factory team\n";
+
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setType("*/*");
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_EMAIL, addresses);
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.putExtra(Intent.EXTRA_TEXT, mssg);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
@@ -89,9 +98,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Thank you!", Toast.LENGTH_SHORT).show();
         String message = createOrderSummary(calculatePrice());
         String[] addresses = new String[1];
-        addresses[0] = "jukkas@protonmail.com";
+        addresses[0] = getEmail();
 
-        emailOrder(addresses, "Testiviesti :)", message);
+        emailOrder(addresses, "Coffee Factory, order confirmation", message);
     }
 
 
@@ -135,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
     private String createOrderSummary(int price) {
         String priceMessage = "Name: " + getName() +
                 "\nEmail: " + getEmail() + "\n" +
-                "\nTotal price is " + price + "€ \n" +
                 "\nOrder list:\n";
 
         if (americanQuantity > 0) {
@@ -154,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
             priceMessage += specialQuantity + " x Special coffee\n";
         }
 
+        priceMessage += "\nTotal price is " + price + "€ \n";
         priceMessage += "\nPlease click ORDER-button to confirm your order!";
         return priceMessage;
     }
