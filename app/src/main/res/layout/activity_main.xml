@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="This is your wonderful change to order the best coffee in town straight from your pocket computer!  :)"
+                android:text="@string/intro_text"
                 android:textColor="#EEEEEE"
                 android:textSize="16sp" />
 
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="Coffee list:"
+                android:text="@string/coffee_list"
                 android:textAllCaps="true"
                 android:textColor="#EEEEEE"
                 android:textSize="16sp" />
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                android:text="American 2€"
+                android:text="@string/american_2"
                 android:textColor="#EEEEEE"
                 android:textSize="14sp" />
 
@@ -74,7 +74,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/button_selector"
                     android:onClick="americanDecrement"
-                    android:text="-"
+                    android:text="@string/decrement"
                     android:textColor="@android:color/white" />
 
                 <TextView
@@ -82,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="0"
+                    android:text="@string/zero"
                     android:textColor="#EEEEEE"
                     android:textSize="16sp" />
 
@@ -92,7 +92,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/button_selector"
                     android:onClick="americanIncrement"
-                    android:text="+"
+                    android:text="@string/increment"
                     android:textColor="@android:color/white" />
 
             </LinearLayout>
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                android:text="Espresso 2€"
+                android:text="@string/espresso"
                 android:textColor="#EEEEEE"
                 android:textSize="14sp" />
 
@@ -117,7 +117,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/button_selector"
                     android:onClick="espressoDecrement"
-                    android:text="-"
+                    android:text="@string/decrement"
                     android:textColor="@android:color/white" />
 
                 <TextView
@@ -125,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="0"
+                    android:text="@string/zero"
                     android:textColor="#EEEEEE"
                     android:textSize="16sp" />
 
@@ -135,7 +135,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/button_selector"
                     android:onClick="espressoIncrement"
-                    android:text="+"
+                    android:text="@string/increment"
                     android:textColor="@android:color/white" />
 
             </LinearLayout>
@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                android:text="Cappuccino 3€"
+                android:text="@string/cappuccino"
                 android:textColor="#EEEEEE"
                 android:textSize="14sp" />
 
@@ -160,7 +160,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/button_selector"
                     android:onClick="cappuccinoDecrement"
-                    android:text="-"
+                    android:text="@string/decrement"
                     android:textColor="@android:color/white" />
 
                 <TextView
@@ -168,7 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="0"
+                    android:text="@string/zero"
                     android:textColor="#EEEEEE"
                     android:textSize="16sp" />
 
@@ -178,7 +178,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/button_selector"
                     android:onClick="cappuccinoIncrement"
-                    android:text="+"
+                    android:text="@string/increment"
                     android:textColor="@android:color/white" />
 
             </LinearLayout>
@@ -188,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                android:text="Latte 3e"
+                android:text="@string/latte"
                 android:textColor="#EEEEEE"
                 android:textSize="14sp" />
 
@@ -203,7 +203,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/button_selector"
                     android:onClick="latteDecrement"
-                    android:text="-"
+                    android:text="@string/decrement"
                     android:textColor="@android:color/white" />
 
                 <TextView
@@ -211,7 +211,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="0"
+                    android:text="@string/zero"
                     android:textColor="#EEEEEE"
                     android:textSize="16sp" />
 
@@ -221,7 +221,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/button_selector"
                     android:onClick="latteIncrement"
-                    android:text="+"
+                    android:text="@string/increment"
                     android:textColor="@android:color/white" />
 
             </LinearLayout>
@@ -231,7 +231,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                android:text="Coffee Factory special 7€"
+                android:text="@string/coffee_factory_special"
                 android:textColor="#EEEEEE"
                 android:textSize="14sp" />
 
@@ -246,7 +246,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/button_selector"
                     android:onClick="specialDecrement"
-                    android:text="-"
+                    android:text="@string/decrement"
                     android:textColor="@android:color/white" />
 
                 <TextView
@@ -254,7 +254,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="0"
+                    android:text="@string/zero"
                     android:textColor="#EEEEEE"
                     android:textSize="16sp" />
 
@@ -264,7 +264,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/button_selector"
                     android:onClick="specialIncrement"
-                    android:text="+"
+                    android:text="@string/increment"
                     android:textColor="@android:color/white" />
 
 
@@ -276,7 +276,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="Order summary"
+                android:text="@string/order_summary"
                 android:textAllCaps="true"
                 android:textColor="#EEEEEE"
                 android:textSize="16sp" />
@@ -289,7 +289,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/order_summary_background"
                 android:padding="8dp"
-                android:text="Choose something tasty :)"
+                android:text="@string/choose_something_tasty"
                 android:textColor="#EEEEEE"
                 android:textSize="16sp" />
 
@@ -306,7 +306,7 @@
                     android:layout_marginTop="16dp"
                     android:background="@drawable/button_selector"
                     android:onClick="updateCart"
-                    android:text="  Update cart  "
+                    android:text="@string/update_cart"
                     android:textColor="@android:color/white" />
 
                 <Button
@@ -317,7 +317,7 @@
                     android:layout_marginTop="16dp"
                     android:background="@drawable/button_selector"
                     android:onClick="verifyOrder"
-                    android:text="Order"
+                    android:text="@string/order"
                     android:textColor="@android:color/white"
                     android:visibility="gone" />
 

@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">CoffeeFactory</string>
+    <string name="intro_text">This is your wonderful change to order the best coffee in town straight from your pocket computer!  :)</string>
+    <string name="coffee_list">Coffee list:</string>
+    <string name="american_2">American 2€</string>
+    <string name="decrement">-</string>
+    <string name="zero">0</string>
+    <string name="increment">+</string>
+    <string name="espresso">Espresso 2€</string>
+    <string name="cappuccino">Cappuccino 3€</string>
+    <string name="latte">Latte 3e</string>
+    <string name="coffee_factory_special">Coffee Factory special 7€</string>
+    <string name="order_summary">Order summary</string>
+    <string name="choose_something_tasty">Choose something tasty :)</string>
+    <string name="update_cart">  Update cart  </string>
+    <string name="order">Order</string>
 </resources>
