@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             isReadyToOrder = false;
         }
         if (getName().isEmpty()) {
-            priceMessage += "Guide: Insert name, please.\n";
+            priceMessage += "Guide: Insert subscriber name, please.\n";
             isReadyToOrder = false;
         }
         if (isValidEmail(getEmail()) == false) {
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         priceMessage += "\nTotal price is " + price + "€ \n";
-        priceMessage += "\nPlease click ORDER-button to confirm your order!";
+        priceMessage += "\nPlease fill the subscriber information below and click ORDER-button to confirm your order!";
         return priceMessage;
     }
 
