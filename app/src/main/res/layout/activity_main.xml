@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
+//todo päivitä guidelle ja order summarylle omat kentät
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/coffeeheart1"
     android:orientation="vertical"
-    tools:context="com.example.jukka1.coffeefactory.MainActivity">
+    tools:context="com.example.jukka1.coffeefactory.MainActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -27,32 +31,9 @@
                 android:textColor="#EEEEEE"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/name_edittext_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name"
-                android:textColor="#EEEEEE"
-                android:inputType="textCapSentences"
-                android:textColorHint="#9E9E9E" />
-
-            <EditText
-                android:id="@+id/email_edittext_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                android:textColor="#EEEEEE"
-                android:textColorHint="#9E9E9E" />
-
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/coffee_list"
-                android:textAllCaps="true"
-                android:textColor="#EEEEEE"
-                android:textSize="16sp" />
+                style="@style/headerTextStyle"
+                android:text="@string/coffee_list" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,13 +50,9 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/button_selector"
+                    style="@style/quantityButton"
                     android:onClick="americanDecrement"
-                    android:text="@string/decrement"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/decrement" />
 
                 <TextView
                     android:id="@+id/american_quantity_text_view"
@@ -87,13 +64,9 @@
                     android:textSize="16sp" />
 
                 <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/button_selector"
+                    style="@style/quantityButton"
                     android:onClick="americanIncrement"
-                    android:text="@string/increment"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/increment" />
 
             </LinearLayout>
 
@@ -112,13 +85,9 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/button_selector"
+                    style="@style/quantityButton"
                     android:onClick="espressoDecrement"
-                    android:text="@string/decrement"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/decrement" />
 
                 <TextView
                     android:id="@+id/espresso_quantity_text_view"
@@ -130,13 +99,9 @@
                     android:textSize="16sp" />
 
                 <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/button_selector"
+                    style="@style/quantityButton"
                     android:onClick="espressoIncrement"
-                    android:text="@string/increment"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/increment" />
 
             </LinearLayout>
 
@@ -155,13 +120,9 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/button_selector"
+                    style="@style/quantityButton"
                     android:onClick="cappuccinoDecrement"
-                    android:text="@string/decrement"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/decrement" />
 
                 <TextView
                     android:id="@+id/cappuccino_quantity_text_view"
@@ -173,13 +134,9 @@
                     android:textSize="16sp" />
 
                 <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/button_selector"
+                    style="@style/quantityButton"
                     android:onClick="cappuccinoIncrement"
-                    android:text="@string/increment"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/increment" />
 
             </LinearLayout>
 
@@ -198,13 +155,9 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/button_selector"
+                    style="@style/quantityButton"
                     android:onClick="latteDecrement"
-                    android:text="@string/decrement"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/decrement" />
 
                 <TextView
                     android:id="@+id/latte_quantity_text_view"
@@ -216,13 +169,9 @@
                     android:textSize="16sp" />
 
                 <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/button_selector"
+                    style="@style/quantityButton"
                     android:onClick="latteIncrement"
-                    android:text="@string/increment"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/increment" />
 
             </LinearLayout>
 
@@ -241,13 +190,9 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/button_selector"
+                    style="@style/quantityButton"
                     android:onClick="specialDecrement"
-                    android:text="@string/decrement"
-                    android:textColor="@android:color/white" />
+                    android:text="@string/decrement" />
 
                 <TextView
                     android:id="@+id/special_quantity_text_view"
@@ -259,27 +204,38 @@
                     android:textSize="16sp" />
 
                 <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/button_selector"
+                    style="@style/quantityButton"
                     android:onClick="specialIncrement"
-                    android:text="@string/increment"
-                    android:textColor="@android:color/white" />
-
+                    android:text="@string/increment" />
 
             </LinearLayout>
 
+            <TextView
+                style="@style/headerTextStyle"
+                android:text="@string/subscriber_information" />
+
+            <EditText
+                android:id="@+id/name_edittext_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:hint="Name"
+                android:inputType="textCapSentences"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#9E9E9E" />
+
+            <EditText
+                android:id="@+id/email_edittext_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:hint="Email"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#9E9E9E" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/order_summary"
-                android:textAllCaps="true"
-                android:textColor="#EEEEEE"
-                android:textSize="16sp" />
+                style="@style/headerTextStyle"
+                android:text="@string/order_summary" />
 
             <TextView
                 android:id="@+id/order_summary_text_view"
@@ -301,11 +257,12 @@
                 <Button
                     android:id="@+id/cart_button_view"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/button_selector"
                     android:onClick="updateCart"
+                    android:padding="8dp"
                     android:text="@string/update_cart"
                     android:textColor="@android:color/white" />
 
@@ -317,13 +274,15 @@
                     android:layout_marginTop="16dp"
                     android:background="@drawable/button_selector"
                     android:onClick="verifyOrder"
+                    android:padding="8dp"
                     android:text="@string/order"
                     android:textColor="@android:color/white"
                     android:visibility="gone" />
 
             </LinearLayout>
 
-
         </LinearLayout>
+
     </ScrollView>
+
 </LinearLayout>
