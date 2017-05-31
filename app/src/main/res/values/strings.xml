@@ -11,7 +11,7 @@
     <string name="latte">Latte 3e</string>
     <string name="coffee_factory_special">Coffee Factory special 7€</string>
     <string name="order_summary">Order summary</string>
-    <string name="choose_something_tasty">Guide: Choose something tasty :)</string>
+    <string name="choose_something_tasty">Guide: Choose something tasty and fill the information below to make an order :)</string>
     <string name="update_cart">Update cart</string>
     <string name="order">Order</string>
     <string name="subscriber_information">Subscriber information</string>
