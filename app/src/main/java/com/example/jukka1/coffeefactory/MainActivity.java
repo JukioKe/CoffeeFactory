@@ -1,14 +1,14 @@
 package com.example.jukka1.coffeefactory;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,27 +42,34 @@ public class MainActivity extends AppCompatActivity {
      */
     public void updateCart(View view) {
         int price = calculatePrice();
-        String priceMessage = "";
+        String guideMessage = "";
         boolean isReadyToOrder = true;
 
         if (price == 0) {
-            priceMessage += "Guide: Your cart is empty. Please choose something delicious!\n";
+            guideMessage += "Guide: Your cart is empty. Please choose something delicious!\n";
             isReadyToOrder = false;
         }
         if (getName().isEmpty()) {
-            priceMessage += "Guide: Insert subscriber name, please.\n";
+            guideMessage += "Guide: Insert subscriber name, please.\n";
             isReadyToOrder = false;
         }
-        if (isValidEmail(getEmail()) == false) {
-            priceMessage += "Guide: Insert valid email address, please.";
+        if (!isValidEmail(getEmail())) {
+            guideMessage += "Guide: Insert valid email address, please.";
             isReadyToOrder = false;
         }
-        if (isReadyToOrder == true) {
-            displayMessage(createOrderSummary(price));
-            displayOrderButton();
+        if (isReadyToOrder) {
+            showOrderSummaryMessage(createOrderSummary(price));
+            showOrderButton();
+            showOrderSummary();
+            hideGuideMessage();
+            scrollViewDown();
             return;
+        } else {
+            hideOrderButton();
+            hideOrderSummary();
+            showGuideMessage();
         }
-        displayMessage(priceMessage);
+        showGuideMessage(guideMessage);
         hideOrderButton();
     }
 
@@ -73,12 +80,14 @@ public class MainActivity extends AppCompatActivity {
         String mssg = "Thank you for your order!\n\n";
         mssg += message;
 
+        //remove the last line(Press Order-button to confirm your order.) of Order summary, as it not needed in email confirmation
         if(mssg.lastIndexOf("\n")>0) {
             mssg = mssg.substring(0, mssg.lastIndexOf("\n"));
         }
 
-        mssg += "\n Regards,\nCoffee Factory team\n";
+        mssg += "\n Regards,\nCoffee Factory team\n\n";
 
+        //start email intent to send Order confirmation via email
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setType("*/*");
         intent.setData(Uri.parse("mailto:"));
@@ -100,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         String[] addresses = new String[1];
         addresses[0] = getEmail();
 
-        emailOrder(addresses, "Coffee Factory, order confirmation", message);
+        emailOrder(addresses, "Coffee Factory order confirmation", message);
     }
 
 
@@ -122,8 +131,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private String getName() {
         EditText nameField = (EditText) findViewById(R.id.name_edittext_view);
-        String name = nameField.getText().toString();
-        return name;
+        return nameField.getText().toString();
     }
 
     /**
@@ -132,14 +140,14 @@ public class MainActivity extends AppCompatActivity {
     private String getEmail() {
         EditText emailField = (EditText) findViewById(R.id.email_edittext_view);
         String emailAddress = emailField.getText().toString();
-        if (isValidEmail(emailAddress) == true) {
+        if (isValidEmail(emailAddress)) {
             return emailAddress;
         }
         return "not valid email";
     }
 
     /**
-     * This method creates a order summary and returns it as an String
+     * This method creates a order summary and returns it as a String
      */
     private String createOrderSummary(int price) {
         String priceMessage = "Name: " + getName() +
@@ -162,8 +170,8 @@ public class MainActivity extends AppCompatActivity {
             priceMessage += specialQuantity + " x Special coffee\n";
         }
 
-        priceMessage += "\nTotal price is " + price + "€ \n";
-        priceMessage += "\nPlease fill the subscriber information below and click ORDER-button to confirm your order!";
+        priceMessage += "\nTotal price is " + price + "€ \n\n";
+        priceMessage += "Press Order-button to confirm your order. After that, You can also send a Order confirmation via email";
         return priceMessage;
     }
 
@@ -171,45 +179,85 @@ public class MainActivity extends AppCompatActivity {
     /**
      * These methods displays the given Quantity value of the chosen coffees.
      */
-    private void displayAmerican(int number) {
+    private void displayAmerican(int quantity) {
         TextView quantityTextView = (TextView) findViewById(R.id.american_quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText("" + quantity);
     }
 
-    private void displayEspresso(int number) {
+    private void displayEspresso(int quantity) {
         TextView quantityTextView = (TextView) findViewById(R.id.espresso_quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText("" + quantity);
     }
 
-    private void displayCappuccino(int number) {
+    private void displayCappuccino(int quantity) {
         TextView quantityTextView = (TextView) findViewById(R.id.cappuccino_quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText("" + quantity);
     }
 
-    private void displayLatte(int number) {
+    private void displayLatte(int quantity) {
         TextView quantityTextView = (TextView) findViewById(R.id.latte_quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText("" + quantity);
     }
 
-    private void displaySpecial(int number) {
+    private void displaySpecial(int quantity) {
         TextView quantityTextView = (TextView) findViewById(R.id.special_quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText("" + quantity);
     }
 
     /**
-     * This method displays the given message on the screen
+     * This method shows the Order summary message
      */
-    private void displayMessage(String message) {
+    private void showOrderSummaryMessage(String message) {
         TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
     }
 
     /**
-     * This method displays Order-button after Update Cart-button is clicked
+     * This method shows the Guide message
      */
-    private void displayOrderButton() {
+    private void showGuideMessage(String message) {
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.guide_text_view);
+        orderSummaryTextView.setText(message);
+    }
+
+    /**
+     * This method shows Order-button after Update Cart-button is clicked
+     */
+    private void showOrderButton() {
         Button orderButton = (Button) findViewById(R.id.order_button_view);
         orderButton.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * This method shows Order summary after Update Cart-button is clicked
+     */
+    private void showOrderSummary() {
+        LinearLayout orderSummary = (LinearLayout) findViewById(R.id.order_summary_layout);
+        orderSummary.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * This method hides Order summary after Update Cart-button is clicked, if there's no correct order information
+     */
+    private void hideOrderSummary() {
+        LinearLayout orderSummary = (LinearLayout) findViewById(R.id.order_summary_layout);
+        orderSummary.setVisibility(View.GONE);
+    }
+
+    /**
+     * This method hides guide message if all information is correct to make an order
+     */
+    private void hideGuideMessage() {
+        TextView guideTextView = (TextView) findViewById(R.id.guide_text_view);
+        guideTextView.setVisibility(View.GONE);
+    }
+
+    /**
+     * This method shows guide message if all information is NOT correct to make an order
+     */
+    private void showGuideMessage() {
+        TextView guideTextView = (TextView) findViewById(R.id.guide_text_view);
+        guideTextView.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -305,16 +353,28 @@ public class MainActivity extends AppCompatActivity {
         displaySpecial(specialQuantity);
     }
 
-
     /**
      * This method tries to validate user given email address
      */
-    public final static boolean isValidEmail(CharSequence emailAddress) {
+    public static boolean isValidEmail(CharSequence emailAddress) {
         if (emailAddress == null) {
             return false;
         } else {
             return android.util.Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches();
         }
+    }
+
+    /**
+     * This method scrolls the main view down(used after Update cart -button is clicked), so user can see the Order summary and press the Order-button easily
+     */
+    private void scrollViewDown() {
+        final ScrollView scrollView = (ScrollView) findViewById(R.id.scrollview_layout);
+        scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        });
     }
 
 }

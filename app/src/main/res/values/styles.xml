@@ -29,4 +29,15 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <!-- Style for the Update cart and Order buttons -->
+    <style name="widerButtons">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>
